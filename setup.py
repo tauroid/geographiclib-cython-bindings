@@ -1,22 +1,14 @@
 import sys
 from distutils.core import setup, Extension
 
-USE_CYTHON = False
-if "--cython" in sys.argv:
-    sys.argv.remove("--cython")
-    USE_CYTHON = True
-
-file_ext = ".pyx" if USE_CYTHON else ".cpp"
-
 extensions = [Extension(
     "geographiclib_cython",
-    ["geographiclib_cython"+file_ext],
+    ["geographiclib_cython.pyx"],
     libraries=["Geographic"]
 )]
 
-if USE_CYTHON:
-    from Cython.Build import cythonize
-    extensions = cythonize(extensions)
+from Cython.Build import cythonize
+extensions = cythonize(extensions)
 
 setup(
     name="geographiclib-cython-bindings",
