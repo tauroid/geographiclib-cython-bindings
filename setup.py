@@ -4,7 +4,7 @@ from distutils.core import setup, Extension
 extensions = [Extension(
     "geographiclib_cython",
     ["geographiclib_cython.pyx"],
-    libraries=["Geographic"]
+    libraries=["GeographicLib"]
 )]
 
 from Cython.Build import cythonize
